@@ -1,0 +1,51 @@
+/* src/components/Tile.css */
+.tile {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    text-align: center;
+  }
+  
+  .tile img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .tile .img-parent {
+    margin-bottom: 16px;
+  }
+  
+  .tile .text {
+    margin: 16px 0;
+  }
+  
+  .tile .link-parent {
+    margin-top: 16px;
+  }
+  
+  .tile .link {
+    text-decoration: none;
+    color: #007BFF;
+    transition: color 0.3s ease;
+  }
+  
+  .tile .link:hover {
+    color: #0056b3;
+  }
+  
+  .tile.left {
+    float: left;
+  }
+  
+  .tile.right {
+    float: right;
+  }
+  
+  .tile.center {
+    margin: 0 auto;
+    float: none;
+  }
+  
