@@ -1,65 +1,48 @@
-import React from 'react';
-import Navbar from './components/NavBar/NavBar';
-import Tile from './components/Tile/Tile'; // Correct import path
-import TypeWriter from './components/Helper/Typewriter'; // Correct import path
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Preloader from "../src/components/Pre";
+import Navbar from "./components/Navbar";
+import Home from "./components/Home/Home";
+import About from "./components/About/About";
+
+import Footer from "./components/Footer";
+import Resume from "./components/Resume/ResumeNew";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate
+} from "react-router-dom";
+import ScrollToTop from "./components/ScrollToTop";
+import "./style.css";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const [load, upadateLoad] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      upadateLoad(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="App">
-      <Navbar />
-      <section id="home">
-        <h1>Welcome to My Portfolio</h1>
-        <h1>Aditya Singh</h1>
-      <TypeWriter
-      text={["Web Developer", "Designer", "Freelancer"]}
-      typingSpeed={100}
-      deletingSpeed={50}
-duration={2000}
-      
-       />
-      </section>
-      <section id="about">
-        <h1>About Me</h1>
-        <p>This is the about section.</p>
-      </section>
-      <section id="projects">
-        <h1>My Projects</h1>
-        <div className="tiles-container">
-          <Tile 
-            header="Project One" 
-            subHeader="A great project" 
-            img="https://via.placeholder.com/150" 
-            text="This is a brief description of my project." 
-            link="https://example.com" 
-            linkText="View Project" 
-            position="left" 
-          />
-          <Tile 
-            header="Project Two" 
-            subHeader="Another great project" 
-            img="https://via.placeholder.com/150" 
-            text="This is another brief description of my project." 
-            link="https://example.com" 
-            linkText="View Project" 
-            position="right" 
-          />
-          <Tile 
-            header="Project Three" 
-            subHeader="Yet another great project" 
-            img="https://via.placeholder.com/150" 
-            text="This is yet another brief description of my project." 
-            link="https://example.com" 
-            linkText="View Project" 
-            position="center" 
-          />
-        </div>
-      </section>
-      <section id="contact">
-        <h1>Contact Me</h1>
-        <p>This is the contact section.</p>
-      </section>
-    </div>
+    <Router>
+      <Preloader load={load} />
+      <div className="App" id={load ? "no-scroll" : "scroll"}>
+        <Navbar />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="*" element={<Navigate to="/"/>} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
