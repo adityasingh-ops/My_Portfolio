@@ -6,7 +6,7 @@ import Particle from "../Particle";
 // import emotion from "../../Assets/Projects/emotion.png";
  import weather from "../../Assets/project1.png";
  import quickquiz from "../../Assets/project2.png";
-// import chatify from "../../Assets/Projects/chatify.png";
+ import chatbot from "../../Assets/3.png";
 // import suicide from "../../Assets/Projects/suicide.png";
 // import bitsOfCode from "../../Assets/Projects/blog.png";
 
@@ -22,6 +22,20 @@ function Projects() {
           Here are a few projects I've worked on recently.
         </p>
         <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Col md={4} className="project-card">
+            <ProjectCard
+              imgPath={chatbot}
+              isBlog={false}
+              title="ChatBot"
+              description="‬
+              ‭ Developed a hotel booking chatbot that authenticates users, books rooms seamlessly, and sends confirmation emails.
+              ‭ Implemented with a secure login system and integrated automated email notifications for booking confirmations.
+
+              "
+              ghLink="https://github.com/adityasingh-ops"
+              demoLink="https://drive.google.com/file/d/13kzpG42DZNGDAuTpUDYaW-svY3caC2zd/view?usp=sharing"
+            />
+          </Col>
            <Col md={4} className="project-card">
             <ProjectCard
               imgPath={weather}
